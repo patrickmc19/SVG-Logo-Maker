@@ -4,6 +4,39 @@ const Circle = require('./lib/circle');
 const Square = require('./lib/square');
 const Triangle = require('./lib/triangle');
 
+const newSVG = (data) => {
+    let newShape;
+    if(data.shape === 'circle') {
+        newShape = new Circle(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    } else if (data.shape === 'square') {
+        newShape = new Square(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    } else {
+        newShape = new Triangle(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    }
+    fs.writeFile('./examples/logo.svg', newShape.render(), (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Generated logo.svg");
+        }
+    })
+}
+
 inquirer.prompt([
     {
         type: 'input',
@@ -45,37 +78,5 @@ inquirer.prompt([
             } else { 
                 return 'Please input a color.' } },
     },
-]).then(newSVG);
-
-const newSVG = (data) => {
-    let newShape;
-    if(data.shape === 'circle') {
-        newShape = new Circle(
-            data.text,
-            data.textColor,
-            data.shape,
-            data.shapeColor
-        )
-    } else if (data.shape === 'square') {
-        newShape = new Square(
-            data.text,
-            data.textColor,
-            data.shape,
-            data.shapeColor
-        )
-    } else {
-        newShape = new Triangle(
-            data.text,
-            data.textColor,
-            data.shape,
-            data.shapeColor
-        )
-    }
-    fs.writeFile('./examples/logo.svg', newShape.render(), (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log("Generated logo.svg");
-        }
-    })
-}
+])
+.then(newSVG);
