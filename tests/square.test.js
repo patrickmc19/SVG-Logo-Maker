@@ -1,26 +1,26 @@
-const Circle = require("../lib/circle");
-const circle = new Circle("end", "red", "circle", "black");
+const Square = require("../lib/square");
+const square = new Square("yes", "white", "square", "black");
 
-describe("Circle", () => {
-    describe("Properties of a circle", () => {
+describe("Square", () => {
+    describe("Properties of a square", () => {
         it ("text", () => {
-            expect(circle.text).toEqual("end");
+            expect(square.text).toEqual("yes");
         })
         it ("textColor", () => {
-            expect(circle.textColor).toEqual("red");
+            expect(square.textColor).toEqual("white");
         })
         it ("shape", () => {
-            expect(circle.shape).toEqual("circle");
+            expect(square.shape).toEqual("square");
         })
         it ("shapeColor", () => {
-            expect(circle.shapeColor).toEqual("black");
+            expect(square.shapeColor).toEqual("black");
         })
     })
-    describe("render of a circle", () => {
+    describe("Render of a square", () => {
         it ("render", () => {
-            expect(circle.render()).toEqual(`<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
-        <circle cx="150" cy="100" r="80" fill="black"></circle>
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="red">end</text>
+            expect(square.render()).toEqual(`<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+        <rect x="10" y="10" width="180" height="180" fill="black"></rect>
+        <text x="100" y="110" font-size="60" text-anchor="middle" fill="white">yes</text>
     </svg>`)
         })
     })

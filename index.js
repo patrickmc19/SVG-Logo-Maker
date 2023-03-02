@@ -3,43 +3,79 @@ const fs = require('fs');
 const Circle = require('./lib/circle');
 const Square = require('./lib/square');
 const Triangle = require('./lib/triangle');
-const Shape = require('./lib/shapes');
 
 inquirer.prompt([
     {
         type: 'input',
         message: 'Please enter up to 3 characters for your logo text.',
         name:'text',
-        validate: (value) => { if (value) { return true } else { return 'Please write something to continue.' } },
+        validate: (value) => { 
+            if ((value) && (value.length <= 3)) { 
+                return true; 
+            } else { 
+                return "Let's keep to 3 characters or less please :)";
+            }
+        },
     },
     {
         type: 'input',
         message: 'Please enter a color for your text.',
         name: 'textColor',
-        validate: (value) => { if (value) { return true } else { return 'Please write something to continue.' } },
+        validate: (value) => { 
+            if (value) { 
+                return true;
+            } else { 
+                return 'Please input a color.';
+            } 
+        },
     },
     {
         type:'list',
         message: 'Please select a shape for your logo.',
         choices: ['circle', 'square', 'triangle'],
         name: 'shape',
-        validate: (value) => { if (value) { return true } else { return 'Please select something to continue.' } },
     },
     {
         type: 'input',
         messgae: 'Please enter a color for your shape.',
         name: 'shapeColor',
-        validate: (value) => { if (value) { return true } else { return 'Please write something to continue.' } },
+        validate: (value) => { 
+            if (value) { 
+                return true 
+            } else { 
+                return 'Please input a color.' } },
     },
-])
-    .then((answers) => {
-        // const logoDetails = svgFile(answers);
-        createNewFile('./examples/logo.svg', logoDetails)
-    })
+]).then(newSVG);
 
-function createNewFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-        if (err) throw err;
-        console.log('Generated logo.svg')
+const newSVG = (data) => {
+    let newShape;
+    if(data.shape === 'circle') {
+        newShape = new Circle(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    } else if (data.shape === 'square') {
+        newShape = new Square(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    } else {
+        newShape = new Triangle(
+            data.text,
+            data.textColor,
+            data.shape,
+            data.shapeColor
+        )
+    }
+    fs.writeFile('./examples/logo.svg', newShape.render(), (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Generated logo.svg");
+        }
     })
 }

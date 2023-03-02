@@ -1,26 +1,26 @@
-const Circle = require("../lib/circle");
-const circle = new Circle("end", "red", "circle", "black");
+const Triangle = require("../lib/triangle");
+const triangle = new Triangle("bed", "black", "triangle", "red");
 
-describe("Circle", () => {
-    describe("Properties of a circle", () => {
+describe("Triangle", () => {
+    describe("Properties of a triangle", () => {
         it ("text", () => {
-            expect(circle.text).toEqual("end");
+            expect(triangle.text).toEqual("bed");
         })
         it ("textColor", () => {
-            expect(circle.textColor).toEqual("red");
+            expect(triangle.textColor).toEqual("black");
         })
         it ("shape", () => {
-            expect(circle.shape).toEqual("circle");
+            expect(triangle.shape).toEqual("triangle");
         })
         it ("shapeColor", () => {
-            expect(circle.shapeColor).toEqual("black");
+            expect(triangle.shapeColor).toEqual("red");
         })
     })
-    describe("render of a circle", () => {
+    describe("render of a triangle", () => {
         it ("render", () => {
-            expect(circle.render()).toEqual(`<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
-        <circle cx="150" cy="100" r="80" fill="black"></circle>
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="red">end</text>
+            expect(triangle.render()).toEqual(`<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+        <polygon points="150, 18 244, 182 56, 182" fill="red"></polygon>
+        <text x="150" y="130" font-size="40" text-anchor="middle" fill="black">bed</text>
     </svg>`)
         })
     })
