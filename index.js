@@ -13,7 +13,7 @@ inquirer.prompt([
             if ((value) && (value.length <= 3)) { 
                 return true; 
             } else { 
-                return "Let's keep to 3 characters or less please :)";
+                return "Let's keep it to 3 characters or less please :)";
             }
         },
     },
