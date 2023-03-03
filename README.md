@@ -33,7 +33,7 @@ THEN I am shown a 300x200 pixel image that matches the criteria I entered
 
 ## Video Link
 
-[Video Link Here]()
+[Video Link Here](https://youtu.be/g9E1TeStBo4)
 
 ## What was my motivation?
 
@@ -53,4 +53,4 @@ That you can make many shapes with SVG. You can validate the input length and ot
 
 ## What makes your project stand out?
 
-Well organized, passing tests, multiple class with inheritance, shape specific renders - pixel perfect.
+Well organized, passing tests, multiple classes with inheritance, shape specific renders - pixel perfect.
