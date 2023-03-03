@@ -20,7 +20,7 @@ describe("Square", () => {
         it ("render", () => {
             expect(square.render()).toEqual(`<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
         <rect x="10" y="10" width="180" height="180" fill="black"></rect>
-        <text x="100" y="110" font-size="60" text-anchor="middle" fill="white">yes</text>
+        <text x="100" y="120" font-size="60" text-anchor="middle" fill="white">yes</text>
     </svg>`)
         })
     })
